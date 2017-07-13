@@ -1,0 +1,46 @@
+###
+### NAMESPACE
+###
+
+import(methods)
+import(oompaBase)
+
+importFrom("graphics", "abline", "points", "text")
+importFrom("stats", "density", "ppoints", "qqline", "qqnorm", "qqplot",
+           "qt", "quantile", "var")
+
+# b00-generics
+exportMethods("analyze")
+exportMethods("process")
+
+# b01-utility
+export("fliplr", "flipud", "ellipse")
+export("f.qq", "f.qt", "f.above.thresh", "f.cord", "f.oneway.rankings")
+
+# b03-channelType
+exportClasses("ChannelType")
+export("ChannelType")
+export("getDesign", "setDesign")
+
+# b04-channel
+exportClasses("Channel")
+export("Channel")
+
+# b05-processor
+exportClasses("Processor")
+export("PROC.SUBTRACTOR", "PROC.THRESHOLD", "PROC.GLOBAL.NORMALIZATION",
+       "PROC.LOG.TRANSFORM", "PROC.MEDIAN.EXPRESSED.NORMALIZATION",
+       "PROC.SUBSET.NORMALIZATION", "PROC.SUBSET.MEAN.NORMALIZATION")
+       
+# b06-pipeline
+exportClasses("Pipeline")
+export("PIPELINE.STANDARD")
+
+# b07-complete-channel
+exportClasses("CompleteChannel")
+export("CompleteChannel")
+exportMethods("channelize")
+export("PROC.BACKGROUND", "PROC.SIGNAL", "PROC.CORRECTED.SIGNAL",
+       "PROC.NEG.CORRECTED.SIGNAL", "PROC.SD.SIGNAL", "PROC.SIGNAL.TO.NOISE")
+export("makeDefaultPipeline", "PIPELINE.MDACC.DEFAULT")
+

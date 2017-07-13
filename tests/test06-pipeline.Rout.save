@@ -1,0 +1,65 @@
+
+R version 3.4.0 (2017-04-21) -- "You Stupid Darkness"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # pipeline-test
+> library(PreProcess)
+Loading required package: oompaBase
+> 
+> set.seed(147745)
+> # simulate a moderately realistic looking microarray
+> nc <- 100
+> nr <- 100
+> v <- rexp(nc*nr, 1/1000)
+> b <- rnorm(nc*nr, 80, 10)
+> s <- sapply(v-b, max, 1)
+> ct <- ChannelType('user', 'random', nc, nr,  'fake')
+> subbed <- Channel(name='fraud', parent='', type=ct, vec=s)
+> rm(ct, nc, nr, v, b, s)		# clean some stuff
+> 
+> # example of standard data processing
+> processed <- process(subbed, PIPELINE.STANDARD)
+> 
+> summary(processed)
+log normalized fraud, a microarray channel object
+Parent object: NA 
+Microarray type: user random 
+Labeled with: fake 
+Design size: 100 by 100 
+Design information object:  
+History:
+	 Channel(parent = "", name = "fraud", type = ct, vec = s) 
+	 Default channel processing (using pipeline: PIPELINE.STANDARD) 
+	 Global normalization (using object: proc) with parameter = 0 
+	 Truncated below (using object: proc) with parameter = 0 
+	 Log transformation (using object: proc) with parameter = 2 
+
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -0.390   7.260   8.849   8.009   9.966  12.777 
+> 
+> par(mfrow=c(2,1))
+> plot(processed)
+> hist(processed)
+> 
+> par(mfrow=c(1,1))
+> image(processed)
+> 
+> rm(subbed, processed)
+> 
+> 
+> proc.time()
+   user  system elapsed 
+   0.93    0.15    1.06 

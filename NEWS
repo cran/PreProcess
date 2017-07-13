@@ -1,0 +1,90 @@
+			Dear Emacs, please make this -*-Text-*- mode!
+        **************************************************
+        *                                                *
+        *              3.1 SERIES NEWS                  *
+        *                                                *
+        **************************************************
+
+
+                CHANGES IN R VERSION 3.1.0
+
+ADMINISTRATIVE
+
+    o	Changed the LICENSE from Artistic 2.0 to Apache 2.0.
+
+                CHANGES IN R VERSION 3.0.3
+
+GENERAL
+
+    o	Added a 'show' method that is basically the same as
+        'print'. Updated test scripts accordingly. 
+
+                CHANGES IN R VERSION 3.0.1
+
+GENERAL
+
+    o	Moved to R-Forge.
+
+
+BUG FIXES
+
+    o	Made compatible with new R check steps that verify DESCRIPTION
+        and NAMESPACE dependencies.
+
+
+                CHANGES IN R VERSION 3.0.0
+
+
+OLD FEATURES
+
+    o   Moved several generic functions (that promoted S3 generics)
+    	from this package into the oompaBase package.  Since
+    	PreProcess still depends on oompaBase, no functionality should
+    	change.
+
+    o   Moved ColorCoding and ColorCodedPair classes from this package
+    	into the oompaBase package.  Since PreProcess still depends on
+    	oompaBase, no functionality should change.
+
+BREAKING CHANGES
+
+    o	Also moved semantic color names from PreProcess to oompaBase,
+        and restructured it to add fewer entries into the namespace.
+        Instead of using 'COLOR.EXPECTED', you must now refer to
+        'oompaColors$EXPECTED'.
+
+
+                CHANGES IN R VERSION 2.12.2
+
+
+BUG FIXES
+
+    o   Lots of documentation updates.
+
+
+                CHANGES IN R VERSION 2.12.1
+
+
+BUG FIXES
+
+    o   Corrected export of 'channelize' method.
+
+
+		CHANGES IN R VERSION 2.10.0
+
+NEW FEATURES
+
+    o	Removed the deprecated function 'stdize'. Use 'scale'
+        instead.
+
+
+		CHANGES IN R VERSION 2.9.0
+
+NEW FEATURES
+
+    o	Added support for namespaces
+
+    o	Deprecated the 'stdize' function in favor of 'scale'. (This
+        function was leftover from an early S-Plus version of the
+        library.)
+
